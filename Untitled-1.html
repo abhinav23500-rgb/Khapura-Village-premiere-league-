@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Premier League 2026</title>
+    <!-- Importing a clean, modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Reset and Theme Colors */
+        :root {
+            --bg-color: #0f172a;       /* Deep stadium night sky */
+            --card-bg: #1e293b;        /* Sleek dark card background */
+            --text-main: #f8fafc;      /* Crisp white text */
+            --text-muted: #94a3b8;     /* Subtle grey text */
+            --accent-green: #22c55e;   /* Vibrant grass green */
+            --accent-gold: #eab308;    /* Trophy gold */
+            --accent-blue: #3b82f6;    /* Border/Highlight blue */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header / Banner Styling */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Section Layouts */
+        h2 {
+            font-size: 1.5rem;
+            margin: 35px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 10px;
+        }
+
+        /* Card Component for Matches/Scorecards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Match Row Content */
+        .match-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .team-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .team-score {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .vs {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .match-result {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .match-info {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Glassmorphism Table Styling */
+        .table-container {
+            overflow-x: auto; /* Makes it scrollable on mobile phones */
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            padding: 16px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.95rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .pos-col { font-weight: 700; color: var(--text-muted); width: 50px; }
+        .team-col { font-weight: 600; }
+        .pts-col { font-weight: 700; color: var(--accent-gold); }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- MAIN HEADER -->
+        <header>
+            <h1>🏆 Village Premier League</h1>
+            <p>Official Tournament Dashboard • 2026</p>
+        </header>
+
+        <!-- POINTS TABLE SECTION -->
+        <h2>📊 Points Table</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="pos-col">Pos</th>
+                        <th class="team-col">Team</th>
+                        <th>P</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th class="pts-col">Pts</th>
+                        <th>NRR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="pos-col">1</td>
+                        <td class="team-col">Royal Challengers</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td class="pts-col">4</td>
+                        <td style="color: var(--accent-green);">+1.450</td>
+                    </tr>
+                    <tr>
+                        <td class="pos-col">2</td>
+                        <td class="team-col">Village United</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="pts-col">2</td>
+                        <td style="color: var(--accent-green);">+0.210</td>
+                    </tr>
+                    <tr>
+                        <td class="pos-col">3</td>
+                        <td class="team-col">Town Fighters</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="pts-col">2</td>
+                        <td style="color: #ef4444;">-0.340</td>
+                    </tr>
+                    <tr>
+                        <td class="pos-col">4</td>
+                        <td class="team-col">Super Kings</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td class="pts-col">0</td>
+                        <td style="color: #ef4444;">-1.220</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RECENT RESULTS SECTION -->
+        <h2>🏏 Recent Results</h2>
+        <div class="card-grid">
+            
+            <!-- Match 2 Card -->
+            <div class="card">
+                <span class="card-tag">Match 2 • Completed</span>
+                <div class="match-row">
+                    <span class="team-name">Village United</span>
+                    <span class="team-score">154/6 (20)</span>
+                </div>
+                <div class="match-row">
+                    <span class="team-name">Town Fighters</span>
+                    <span class="team-score">155/3 (18.4)</span>
+                </div>
+                <div class="match-result">Town Fighters won by 7 wickets</div>
+            </div>
+
+            <!-- Match 1 Card -->
+            <div class="card">
+                <span class="card-tag">Match 1 • Completed</span>
+                <div class="match-row">
+                    <span class="team-name">Royal Challengers</span>
+                    <span class="team-score">182/4 (20)</span>
+                </div>
+                <div class="match-row">
+                    <span class="team-name">Super Kings</span>
+                    <span class="team-score">120/10 (17.1)</span>
+                </div>
+                <div class="match-result">Royal Challengers won by 62 runs</div>
+            </div>
+
+        </div>
+
+        <!-- UPCOMING MATCHES SECTION -->
+        <h2>📅 Upcoming Fixtures</h2>
+        <div class="card-grid">
+            
+            <!-- Upcoming Match 3 -->
+            <div class="card">
+                <span class="card-tag" style="color: var(--accent-blue);">Match 3 • Next Match</span>
+                <div class="match-row">
+                    <span class="team-name">Super Kings</span>
+                    <span class="vs">vs</span>
+                    <span class="team-name">Village United</span>
+                </div>
+                <div class="match-result match-info">May 18 • 4:30 PM</div>
+            </div>
+
+            <!-- Upcoming Match 4 -->
+            <div class="card">
+                <span class="card-tag">Match 4</span>
+                <div class="match-row">
+                    <span class="team-name">Royal Challengers</span>
+                    <span class="vs">vs</span>
+                    <span class="team-name">Town Fighters</span>
+                </div>
+                <div class="match-result match-info">May 19 • 4:30 PM</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
